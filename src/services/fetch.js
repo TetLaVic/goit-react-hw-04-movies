@@ -15,6 +15,27 @@ const fetchMovies = (query, page) => {
   });
 };
 
+const fetchMovieDetails = (movieId) => {
+  const url = `movie/${movieId}?&language=en-US&api_key=${API_KEY}`;
+  return axios.get(url).then(({ data }) => {
+    return data;
+  });
+};
+
+const fetchMovieCredits = (movieId) => {
+  const url = `movie/${movieId}/credits?&language=en-US&api_key=${API_KEY}`;
+  return axios.get(url).then(({ data }) => {
+    return data;
+  });
+};
+
+const fetchMovieReviews = (movieId) => {
+  const url = `movie/${movieId}/reviews?&language=en-US&api_key=${API_KEY}`;
+  return axios.get(url).then(({ data }) => {
+    return data;
+  });
+};
+
 const fetchTrending = () => {
   const url = `trending/movie/day?api_key=${API_KEY}`;
   return axios.get(url).then(({ data }) => {
@@ -27,4 +48,10 @@ const fetchTrending = () => {
   });
 };
 
-export { fetchMovies, fetchTrending };
+export {
+  fetchMovies,
+  fetchMovieDetails,
+  fetchTrending,
+  fetchMovieCredits,
+  fetchMovieReviews,
+};
