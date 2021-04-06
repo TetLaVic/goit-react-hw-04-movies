@@ -4,14 +4,11 @@ const BASE_URL = "https://api.themoviedb.org/3/";
 
 axios.defaults.baseURL = BASE_URL;
 
-const fetchMovies = (query, page) => {
-  const url = `search/movie?q=${query}&page=${page}&key=${API_KEY}`;
+const fetchMovies = (query) => {
+  const url = `search/movie?query=${query}&api_key=${API_KEY}`;
   return axios.get(url).then(({ data }) => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
-    return data;
+    console.log(data);
+    return data.results;
   });
 };
 
@@ -39,10 +36,6 @@ const fetchMovieReviews = (movieId) => {
 const fetchTrending = () => {
   const url = `trending/movie/day?api_key=${API_KEY}`;
   return axios.get(url).then(({ data }) => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
     console.log(data.results);
     return data.results;
   });

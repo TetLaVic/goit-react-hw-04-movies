@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { fetchTrending } from "../../services/fetch";
 import Gallery from "../../components/Gallery";
-// import Header from "../../components/Header";
 
 class Home extends Component {
   state = { gallery: [] };
@@ -9,7 +8,7 @@ class Home extends Component {
   componentDidMount = () => {
     this.setState({ gallery: [] });
     fetchTrending().then((movies) => {
-      this.setState({ gallery: [...movies] });
+      this.setState({ gallery: movies });
     });
   };
 

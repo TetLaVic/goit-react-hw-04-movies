@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/fetch";
 // import PropTypes from "prop-types";
 
@@ -15,13 +16,6 @@ class MovieDetailsPage extends Component {
   }
 
   render() {
-    // const {
-    //   poster_path,
-    //   vote_average,
-    //   overview,
-    //   genres,
-    //   title,
-    // } = this.state.movie;
     return (
       <>
         {this.state.movie ? (
@@ -34,7 +28,6 @@ class MovieDetailsPage extends Component {
               }
               alt=""
             />
-            {/* <h1>Movie Details Page {this.props.match.params.movieId}</h1> */}
             <h2>
               {this.state.movie.title ? this.state.movie.title : "No title"}
             </h2>
@@ -46,6 +39,15 @@ class MovieDetailsPage extends Component {
               {this.state.movie.genres.map((genre) => (
                 <li key={genre.name}>{genre.name}</li>
               ))}
+            </ul>
+            <h4>Additional information</h4>
+            <ul>
+              <li>
+                <Link to={`${this.props.match.url}/cast`}>Cast</Link>
+              </li>
+              <li>
+                <Link to={`${this.props.match.url}/reviews`}>Reviews</Link>
+              </li>
             </ul>
           </>
         ) : (
