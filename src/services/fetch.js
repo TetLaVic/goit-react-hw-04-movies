@@ -7,7 +7,6 @@ axios.defaults.baseURL = BASE_URL;
 const fetchMovies = (query) => {
   const url = `search/movie?query=${query}&api_key=${API_KEY}`;
   return axios.get(url).then(({ data }) => {
-    console.log(data);
     return data.results;
   });
 };
@@ -22,21 +21,20 @@ const fetchMovieDetails = (movieId) => {
 const fetchMovieCredits = (movieId) => {
   const url = `movie/${movieId}/credits?&language=en-US&api_key=${API_KEY}`;
   return axios.get(url).then(({ data }) => {
-    return data;
+    return data.cast;
   });
 };
 
 const fetchMovieReviews = (movieId) => {
   const url = `movie/${movieId}/reviews?&language=en-US&api_key=${API_KEY}`;
   return axios.get(url).then(({ data }) => {
-    return data;
+    return data.results;
   });
 };
 
 const fetchTrending = () => {
   const url = `trending/movie/day?api_key=${API_KEY}`;
   return axios.get(url).then(({ data }) => {
-    console.log(data.results);
     return data.results;
   });
 };

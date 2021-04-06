@@ -1,6 +1,8 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/fetch";
+import MovieCast from "../../components/MovieCast";
+import MovieReviews from "../../components/MovieReviews";
 // import PropTypes from "prop-types";
 
 class MovieDetailsPage extends Component {
@@ -11,7 +13,6 @@ class MovieDetailsPage extends Component {
     this.setState({ movie: null });
     fetchMovieDetails(movieId).then((movieDetails) => {
       this.setState({ movie: movieDetails });
-      console.log(movieDetails);
     });
   }
 
@@ -43,12 +44,22 @@ class MovieDetailsPage extends Component {
             <h4>Additional information</h4>
             <ul>
               <li>
-                <Link to={`${this.props.match.url}/cast`}>Cast</Link>
+                <NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink>
               </li>
               <li>
-                <Link to={`${this.props.match.url}/reviews`}>Reviews</Link>
+                <NavLink to={`${this.props.match.url}/reviews`}>
+                  Reviews
+                </NavLink>
               </li>
             </ul>
+            <Route
+              path={`${this.props.match.path}/cast`}
+              component={MovieCast}
+            />
+            <Route
+              path={`${this.props.match.path}/reviews`}
+              component={MovieReviews}
+            />
           </>
         ) : (
           false
