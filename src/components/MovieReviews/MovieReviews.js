@@ -2,18 +2,18 @@ import { Component } from "react";
 import { fetchMovieReviews } from "../../services/fetch.js";
 
 class MovieReviews extends Component {
-  state = { movieReviews: null };
+  state = { movieReviews: [] };
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
-    this.setState({ movieReviews: null });
+    this.setState({ movieReviews: [] });
     fetchMovieReviews(movieId).then((movieReviews) => {
       this.setState({ movieReviews });
     });
   }
 
   render() {
-    return this.state.movieReviews ? (
+    return this.state.movieReviews.length > 0 ? (
       <>
         <h4>Movie Reviews</h4>
         <ul>
@@ -26,7 +26,7 @@ class MovieReviews extends Component {
         </ul>
       </>
     ) : (
-      false
+      <p>No reviews yet</p>
     );
   }
 }

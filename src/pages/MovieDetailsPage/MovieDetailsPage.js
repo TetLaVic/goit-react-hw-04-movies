@@ -3,6 +3,7 @@ import { NavLink, Route } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/fetch";
 import MovieCast from "../../components/MovieCast";
 import MovieReviews from "../../components/MovieReviews";
+import styles from "./MovieDetailsPage.module.css";
 // import PropTypes from "prop-types";
 
 class MovieDetailsPage extends Component {
@@ -19,35 +20,57 @@ class MovieDetailsPage extends Component {
   render() {
     return (
       <>
+        <button
+          className={styles.ButtonGoBack}
+          type="button"
+          onClick={() => {
+            this.props.history.goBack();
+          }}
+        >
+          Go back
+        </button>
         {this.state.movie ? (
           <>
-            <img
-              src={
-                this.state.movie.backdrop_path
-                  ? `https://image.tmdb.org/t/p/w500${this.state.movie.backdrop_path}`
-                  : "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
-              }
-              alt=""
-            />
-            <h2>
-              {this.state.movie.title ? this.state.movie.title : "No title"}
-            </h2>
-            <span>User score: {this.state.movie.vote_average}</span>
-            <h3>Overview</h3>
-            <span>{this.state.movie.overview}</span>
-            <h4>Genres</h4>
-            <ul>
-              {this.state.movie.genres.map((genre) => (
-                <li key={genre.name}>{genre.name}</li>
-              ))}
-            </ul>
+            <div className={styles.MovieCard}>
+              <img
+                className={styles.MovieImage}
+                src={
+                  this.state.movie.backdrop_path
+                    ? `https://image.tmdb.org/t/p/w500${this.state.movie.backdrop_path}`
+                    : "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
+                }
+                alt=""
+              />
+              <div className={styles.MovieDetails}>
+                <h2>
+                  {this.state.movie.title ? this.state.movie.title : "No title"}
+                </h2>
+                <span>User score: {this.state.movie.vote_average}</span>
+                <h3>Overview</h3>
+                <span>{this.state.movie.overview}</span>
+                <h4>Genres</h4>
+                <ul>
+                  {this.state.movie.genres.map((genre) => (
+                    <li key={genre.name}>{genre.name}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
             <h4>Additional information</h4>
             <ul>
               <li>
-                <NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink>
+                <NavLink
+                  className={styles.Link}
+                  to={`${this.props.match.url}/cast`}
+                >
+                  Cast
+                </NavLink>
               </li>
               <li>
-                <NavLink to={`${this.props.match.url}/reviews`}>
+                <NavLink
+                  className={styles.Link}
+                  to={`${this.props.match.url}/reviews`}
+                >
                   Reviews
                 </NavLink>
               </li>

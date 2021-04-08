@@ -1,0 +1,35 @@
+.ButtonGoBack {
+  display: block;
+  margin: 20px;
+  padding: 7px;
+  background-color: wheat;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.MovieCard {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  padding-bottom: 10px;
+  border-bottom: 2px solid grey;
+}
+
+.MovieImage {
+  display: inline-block;
+  object-fit: cover;
+  margin-left: 20px;
+  width: 100%;
+}
+
+.MovieDetails {
+  padding: 10px;
+}
+
+.Link {
+  color: blue;
+}
+
+h4 {
+  margin-left: 20px;
+}

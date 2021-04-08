@@ -21,7 +21,11 @@ class MovieCast extends Component {
             return (
               <li key={id}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                  src={
+                    profile_path
+                      ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                      : "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
+                  }
                   alt={name}
                   width={"200px"}
                 />

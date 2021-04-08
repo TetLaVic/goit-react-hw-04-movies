@@ -1,17 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./SiteNav.module.css";
 
 const SiteNav = () => {
   return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
+    <ul className={styles.SiteNav}>
+      <li className={styles.SiteNavLink}>
+        <NavLink
+          to="/"
+          exact
+          className={styles.NavLink}
+          activeClassName={styles.NavLinkActive}
+        >
+          Home
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/movies">Movies</NavLink>
+      <li className={styles.SiteNavLink}>
+        <NavLink
+          to="/movies"
+          className={styles.NavLink}
+          activeClassName={styles.NavLinkActive}
+        >
+          Movies
+        </NavLink>
       </li>
-
-      {/* <NavLink to="/movies" className={} activeClassName={} /> */}
     </ul>
   );
 };

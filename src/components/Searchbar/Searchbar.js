@@ -1,7 +1,6 @@
 import { Component } from "react";
 import styles from "./Searchbar.module.css";
-
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class Searchbar extends Component {
   state = { query: "" };
@@ -39,7 +38,7 @@ class Searchbar extends Component {
             type="text"
             autoComplete="off"
             autoFocus
-            placeholder="Search images and photos"
+            placeholder="Search movies"
             onChange={this.handleChange}
           />
         </form>
@@ -48,8 +47,8 @@ class Searchbar extends Component {
   }
 }
 
-// Searchbar.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;
