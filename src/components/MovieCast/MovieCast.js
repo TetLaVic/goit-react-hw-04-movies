@@ -13,31 +13,33 @@ class MovieCast extends Component {
   }
 
   render() {
-    return this.state.movieCast ? (
-      <>
-        <h4>Movie cast</h4>
-        <ul>
-          {this.state.movieCast.map(({ profile_path, name, character, id }) => {
-            return (
-              <li key={id}>
-                <img
-                  src={
-                    profile_path
-                      ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                      : "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
-                  }
-                  alt={name}
-                  width={"200px"}
-                />
-                <p>{name}</p>
-                <p>Character: {character}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </>
-    ) : (
-      false
+    return (
+      this.state.movieCast && (
+        <>
+          <h4>Movie cast</h4>
+          <ul>
+            {this.state.movieCast.map(
+              ({ profile_path, name, character, id }) => {
+                return (
+                  <li key={id}>
+                    <img
+                      src={
+                        profile_path
+                          ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                          : "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
+                      }
+                      alt={name}
+                      width={"200px"}
+                    />
+                    <p>{name}</p>
+                    <p>Character: {character}</p>
+                  </li>
+                );
+              }
+            )}
+          </ul>
+        </>
+      )
     );
   }
 }

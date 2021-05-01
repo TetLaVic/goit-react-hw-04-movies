@@ -4,7 +4,7 @@ import { fetchMovies } from "../../services/fetch.js";
 import Gallery from "../../components/Gallery";
 
 class Movies extends Component {
-  state = { query: "", movies: [] };
+  state = { query: "", gallery: [] };
 
   handleNewQuery = ({ query }) => {
     this.setState({ gallery: [] });
@@ -17,7 +17,7 @@ class Movies extends Component {
     return (
       <>
         <Searchbar onSubmit={this.handleNewQuery} />
-        {this.state.gallery ? <Gallery movies={this.state.gallery} /> : false}
+        {this.state.gallery && <Gallery movies={this.state.gallery} />}
       </>
     );
   }

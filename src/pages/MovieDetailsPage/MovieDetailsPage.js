@@ -17,15 +17,27 @@ class MovieDetailsPage extends Component {
     });
   }
 
+  handleGoBack = () => {
+    const { location, history } = this.props;
+    console.log(location, history);
+    // if (location.state && location.state.from) {
+    //   return history.push(location.state.from);
+    // }
+
+    // history.push("/");
+
+    location.state && location.state.from
+      ? history.push(location.state.from)
+      : history.push("/");
+  };
+
   render() {
     return (
       <>
         <button
           className={styles.ButtonGoBack}
           type="button"
-          onClick={() => {
-            this.props.history.goBack();
-          }}
+          onClick={this.handleGoBack}
         >
           Go back
         </button>

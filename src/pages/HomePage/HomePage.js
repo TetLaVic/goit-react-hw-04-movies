@@ -13,7 +13,6 @@ class Home extends Component {
   };
 
   render() {
-    console.log(this.props.match.url);
     return (
       <>
         <h2>Trending today</h2>
