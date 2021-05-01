@@ -2,21 +2,48 @@ import { Component } from "react";
 import Searchbar from "../../components/Searchbar";
 import { fetchMovies } from "../../services/fetch.js";
 import Gallery from "../../components/Gallery";
+import queryString from "query-string";
+
+const getQueryFromProps = (props) =>
+  queryString.parse(props.location.search).query;
 
 class Movies extends Component {
-  state = { query: "", gallery: [] };
+  state = { gallery: [] };
 
-  handleNewQuery = ({ query }) => {
+  componentDidMount() {
+    const nextQuery = getQueryFromProps(this.props);
+    this.handleNewQuery(nextQuery);
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevQuery = getQueryFromProps(prevProps);
+    const nextQuery = getQueryFromProps(this.props);
+
+    if (prevQuery !== nextQuery) {
+      this.handleNewQuery(nextQuery);
+    }
+  }
+
+  handleNewQuery = (query) => {
     this.setState({ gallery: [] });
-    fetchMovies(query).then((movies) => {
-      this.setState({ gallery: movies });
+    if (query) {
+      fetchMovies(query).then((movies) => {
+        this.setState({ gallery: movies });
+      });
+    }
+  };
+
+  onQueryChange = ({ query }) => {
+    this.props.history.push({
+      pathname: this.props.location.pathname,
+      search: `query=${query}`,
     });
   };
 
   render() {
     return (
       <>
-        <Searchbar onSubmit={this.handleNewQuery} />
+        <Searchbar onSubmit={this.onQueryChange} />
         {this.state.gallery && <Gallery movies={this.state.gallery} />}
       </>
     );
