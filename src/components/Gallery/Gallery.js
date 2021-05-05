@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 class Gallery extends Component {
   render() {
     const { movies, location } = this.props;
-    console.log("location", location, "props", this.props);
     return (
       <>
         <ul>

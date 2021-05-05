@@ -19,7 +19,7 @@ class MovieDetailsPage extends Component {
 
   handleGoBack = () => {
     const { location, history } = this.props;
-    console.log(location, history);
+    // console.log(location, history);
     // if (location.state && location.state.from) {
     //   return history.push(location.state.from);
     // }
