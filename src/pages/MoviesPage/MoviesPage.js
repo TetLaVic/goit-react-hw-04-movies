@@ -44,7 +44,9 @@ class Movies extends Component {
     return (
       <>
         <Searchbar onSubmit={this.onQueryChange} />
-        {this.state.gallery && <Gallery movies={this.state.gallery} />}
+        {this.state.gallery.length > 0 && (
+          <Gallery movies={this.state.gallery} />
+        )}
       </>
     );
   }

@@ -5,6 +5,7 @@ import MovieCast from "../../components/MovieCast";
 import MovieReviews from "../../components/MovieReviews";
 import styles from "./MovieDetailsPage.module.css";
 // import PropTypes from "prop-types";
+import poster from "./no-poster.jpg";
 
 class MovieDetailsPage extends Component {
   state = { movie: null };
@@ -49,7 +50,7 @@ class MovieDetailsPage extends Component {
                 src={
                   this.state.movie.backdrop_path
                     ? `https://image.tmdb.org/t/p/w500${this.state.movie.backdrop_path}`
-                    : "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
+                    : poster
                 }
                 alt=""
               />
